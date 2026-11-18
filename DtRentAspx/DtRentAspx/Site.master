@@ -1,0 +1,286 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DtRentAspx.Site" %>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d0d0f" />
+    <title>DT-Rent</title>
+    <link rel="icon" type="image/svg+xml" href="~/Images/logo.svg" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" class="d-flex flex-column min-vh-100">
+        <asp:ScriptManager ID="smMain" runat="server" />
+        <!-- ========== Thanh menu ========== -->
+        <nav class="navbar navbar-expand-lg navbar-dark dt-navbar">
+            <div class="container">
+                <a class="navbar-brand" runat="server" href="~/Default.aspx">
+                    <img runat="server" src="~/Images/logo.svg" alt="Logo DT-Rent" width="44" height="44" />
+                    <span class="fw-bold">TX<span class="accent">-Rent</span></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#menuChinh" aria-controls="menuChinh"
+                        aria-expanded="false" aria-label="Mở menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuChinh">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Default.aspx">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Xe.aspx">Xe</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/KhachHang.aspx">Khách hàng</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/PhieuThue.aspx">Phiếu thuê</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/TraXe.aspx">Trả xe</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/ThanhToan.aspx">Thanh toán</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/BaoTri.aspx">Bảo trì</a></li>
+                    </ul>
+                    <asp:HyperLink ID="lnkDangNhap" runat="server" NavigateUrl="~/DangNhap.aspx"
+                                   CssClass="btn btn-primary btn-sm ms-lg-3">Đăng nhập</asp:HyperLink>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ========== Vùng ảnh bìa (toàn chiều rộng): chỉ trang nào cần mới điền ========== -->
+        <asp:ContentPlaceHolder ID="HeroContent" runat="server"></asp:ContentPlaceHolder>
+
+        <!-- ========== Nội dung chính ========== -->
+        <main class="container py-4 flex-grow-1">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </main>
+
+        <!-- ========== Chân trang ========== -->
+        <footer class="dt-footer mt-auto pt-5 pb-3">
+            <div class="container">
+                <div class="row g-4">
+
+                    <%-- Giới thiệu --%>
+                    <div class="col-lg-4">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img runat="server" src="~/Images/logo.svg" alt="Logo TX-Rent" width="44" height="44" />
+                            <span class="fs-5 fw-bold text-white">TX<span class="accent">-Rent</span></span>
+                        </div>
+                        <p class="small mb-0">Hệ thống cho thuê xe ô tô: quản lý xe, khách hàng, <br />
+                            phiếu thuê, trả xe và thanh toán.</p>
+                    </div>
+
+                    <%-- Liên hệ: THAY bằng thông tin thật của bạn --%>
+                    <div class="col-sm-6 col-lg-4">
+                        <h6 class="footer-title">Liên hệ</h6>
+                        <ul class="list-unstyled small mb-0 footer-contact">
+                            <li><span class="label"><img src="Images/icon_vitri.png" width="20px"/> Địa chỉ</span>[Số nhà, đường, phường/xã, tỉnh/thành]</li>
+                            <li><span class="label"><img src="Images/icon_dienthoai.png" width="20px"/> Điện thoại</span><a href="tel:0900000000">0969 696 969</a></li>
+                            <li><span class="label"><img src="Images/icon_email.png" width="20px"/> Email</span><a href="mailto:lienhe@example.com">lienhe@example.com</a></li>
+                            <li><span class="label"><img src="Images/icon_dongho.png" width="20px"/> Giờ làm việc</span>07:30 &ndash; 18:00, Thứ Hai &ndash; Chủ nhật</li>
+                        </ul>
+                    </div>
+
+                    <%-- Liên kết nhanh --%>
+                    <div class="col-sm-6 col-lg-4">
+                        <h6 class="footer-title">Liên kết nhanh</h6>
+                        <ul class="list-unstyled small mb-0">
+                            <li><a runat="server" href="~/Xe.aspx">Danh sách xe</a></li>
+                            <li><a runat="server" href="~/LapPhieuThue.aspx">Lập phiếu thuê</a></li>
+                            <li><a runat="server" href="~/TraXe.aspx">Trả xe</a></li>
+                            <li><a runat="server" href="~/ThanhToan.aspx">Thanh toán</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="footer-divider my-4" />
+
+                <div class="small d-flex flex-column flex-md-row justify-content-between gap-1">
+                    <span>&copy; <%: DateTime.Now.Year %> TX-Rent &ndash; Bài tập lớn Lập trình Web ASPX</span>
+                    <span>Nhóm thực hiện: [NHÓM 6 / Nguyễn Minh Trí - Nguyễn Thị Hồ Ngọc Bảo Xuyên]</span>
+                </div>
+            </div>
+        </footer>
+        <%-- ================= PANEL CHI TIẾT XE (offcanvas bên phải) ================= --%>
+        <div class="offcanvas offcanvas-end xe-offcanvas" tabindex="-1" id="ocXe" aria-labelledby="ocXeTieuDe">
+ 
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="ocXeTieuDe">Chi tiết xe</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Đóng"></button>
+            </div>
+ 
+            <div class="offcanvas-body p-0">
+                <asp:UpdatePanel ID="upXe" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <asp:FormView ID="fvXe" runat="server" RenderOuterTable="false" EnableViewState="false"
+                                      ItemType="DtRentAspx.Models.XeChiTietVM">
+ 
+                            <ItemTemplate>
+                                <div class="xe-oc">
+ 
+                                    <%-- Ảnh lớn + dãy ảnh nhỏ --%>
+                                    <div class="xe-gallery-main">
+                                        <img width="12.5rem" id="ocAnhChinh" src="<%# ResolveUrl(Item.DanhSachAnh[0]) %>" alt="<%#: Item.ten_xe %>"
+                                             onerror="this.onerror=null;this.src='<%# ResolveUrl("~/Images/xe-placeholder.svg") %>';" />
+                                        <span class="badge xe-status <%# Item.TrangThaiCss %>"><%#: Item.TrangThaiText %></span>
+                                    </div>
+                                    <asp:Panel runat="server" CssClass="xe-thumbs" Visible='<%# Item.DanhSachAnh.Count > 1 %>'>
+                                        <asp:Repeater runat="server" ItemType="System.String" DataSource='<%# Item.DanhSachAnh %>'>
+                                            <ItemTemplate>
+                                                <button type="button" class="xe-thumb" data-src="<%# ResolveUrl(Item) %>">
+                                                    <img src="<%# ResolveUrl(Item) %>" alt="" />
+                                                </button>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </asp:Panel>
+ 
+                                    <div class="p-4">
+ 
+                                        <%-- Tên, biển số, giá --%>
+                                        <div class="text-muted small mb-1"><%#: Item.ten_nhom %></div>
+                                        <h2 class="h4 fw-bold mb-1"><%#: Item.ten_xe %></h2>
+                                        <div class="text-muted mb-3">Biển số <strong><%#: Item.bien_so %></strong> &middot; Mã xe <%#: Item.ma_xe %></div>
+ 
+                                        <div class="d-flex align-items-baseline gap-2 mb-3">
+                                            <span class="xe-price-lg"><%#: Item.GiaHienThi %></span>
+                                            <span class="text-muted">/ ngày</span>
+                                        </div>
+                                        <div class="mb-4">
+                                            <span class="xe-chip"><%#: Item.so_cho %> chỗ</span>
+                                            <span class="xe-chip"><%#: Item.NhienLieuText %></span>
+                                            <span class="xe-chip">Đời <%#: Item.nam_san_xuat %></span>
+                                            <span class="xe-chip"><%#: Item.LuotThueText %></span>
+                                        </div>
+ 
+                                        <%-- Các thẻ thông tin --%>
+                                        <ul class="nav nav-tabs xe-tabs" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" type="button" role="tab"
+                                                        data-bs-toggle="tab" data-bs-target="#tabThongSo">Thông số</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" type="button" role="tab"
+                                                        data-bs-toggle="tab" data-bs-target="#tabDieuKien">Điều kiện thuê</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" type="button" role="tab"
+                                                        data-bs-toggle="tab" data-bs-target="#tabLich">Lịch thuê</button>
+                                            </li>
+                                        </ul>
+ 
+                                        <div class="tab-content pt-3">
+ 
+                                            <div class="tab-pane fade show active" id="tabThongSo" role="tabpanel">
+                                                <dl class="row xe-spec">
+                                                    <dt class="col-5">Hãng sản xuất</dt><dd class="col-7"><%#: Item.hang_san_xuat %></dd>
+                                                    <dt class="col-5">Dòng xe</dt><dd class="col-7"><%#: Item.dong_xe %></dd>
+                                                    <dt class="col-5">Năm sản xuất</dt><dd class="col-7"><%#: Item.nam_san_xuat %></dd>
+                                                    <dt class="col-5">Nhóm xe</dt><dd class="col-7"><%#: Item.ten_nhom %></dd>
+                                                    <dt class="col-5">Số chỗ ngồi</dt><dd class="col-7"><%#: Item.so_cho %> chỗ</dd>
+                                                    <dt class="col-5">Nhiên liệu</dt><dd class="col-7"><%#: Item.NhienLieuText %></dd>
+                                                    <dt class="col-5">Số km đã đi</dt><dd class="col-7"><%#: Item.KmDaDiText %></dd>
+                                                    <asp:PlaceHolder runat="server" Visible='<%# Item.CoPin %>'>
+                                                        <dt class="col-5">Tình trạng pin</dt><dd class="col-7"><%#: Item.PinText %></dd>
+                                                    </asp:PlaceHolder>
+                                                    <asp:PlaceHolder runat="server" Visible='<%# Item.CoGhiChu %>'>
+                                                        <dt class="col-5">Ghi chú</dt><dd class="col-7"><%#: Item.ghi_chu %></dd>
+                                                    </asp:PlaceHolder>
+                                                </dl>
+                                            </div>
+ 
+                                            <div class="tab-pane fade" id="tabDieuKien" role="tabpanel">
+                                                <dl class="row xe-spec mb-4">
+                                                    <dt class="col-6">Cách tính giá</dt><dd class="col-6"><%#: Item.ChinhSachGiaText %></dd>
+                                                    <dt class="col-6">Giới hạn km</dt><dd class="col-6"><%#: Item.KmGioiHanText %></dd>
+                                                    <dt class="col-6">Phí vượt km</dt><dd class="col-6"><%#: Item.PhiVuotKmText %></dd>
+                                                    <dt class="col-6">Phí trả xe trễ</dt><dd class="col-6"><%#: Item.PhiTreText %></dd>
+                                                    <dt class="col-6">Tiền đặt cọc</dt><dd class="col-6"><%#: Item.TienCocText %></dd>
+                                                </dl>
+                                                <h3 class="h6 fw-bold">Giấy phép lái xe yêu cầu</h3>
+                                                <asp:Repeater runat="server" ItemType="System.String" DataSource='<%# Item.GplxYeuCau %>'>
+                                                    <HeaderTemplate><ul class="list-group list-group-flush"></HeaderTemplate>
+                                                    <ItemTemplate><li class="list-group-item px-0">Hạng <%#: Item %></li></ItemTemplate>
+                                                    <FooterTemplate></ul></FooterTemplate>
+                                                </asp:Repeater>
+                                                <asp:Panel runat="server" CssClass="text-muted" Visible='<%# !Item.CoGplx %>'>
+                                                    Chưa có thông tin hạng giấy phép lái xe cho nhóm xe này.
+                                                </asp:Panel>
+                                            </div>
+ 
+                                            <div class="tab-pane fade" id="tabLich" role="tabpanel">
+                                                <asp:Repeater runat="server" ItemType="DtRentAspx.Models.LichThueVM" DataSource='<%# Item.LichThue %>'>
+                                                    <HeaderTemplate><ul class="list-group list-group-flush"></HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <li class="list-group-item px-0">
+                                                            <span class="text-muted">Từ</span> <strong><%#: Item.Tu %></strong><br />
+                                                            <span class="text-muted">đến</span> <strong><%#: Item.Den %></strong>
+                                                        </li>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate></ul></FooterTemplate>
+                                                </asp:Repeater>
+                                                <asp:Panel runat="server" CssClass="text-muted" Visible='<%# !Item.CoLich %>'>
+                                                    Hiện xe chưa có lịch thuê nào đang diễn ra.
+                                                </asp:Panel>
+                                            </div>
+                                        </div>
+                                    </div>
+ 
+                                    <%-- Thanh nút cố định ở đáy panel --%>
+                                    <div class="xe-oc-footer">
+                                        <asp:HyperLink runat="server" CssClass="btn btn-primary"
+                                                       NavigateUrl='<%# "~/LapPhieuThue.aspx?xe=" + Item.id %>'
+                                                       Visible='<%# Item.SanSang %>'>Thuê xe này</asp:HyperLink>
+                                        <asp:Panel runat="server" CssClass="xe-oc-note" Visible='<%# !Item.SanSang %>'>
+                                            Xe hiện <strong><%#: Item.TrangThaiText.ToLower() %></strong>, chưa thể lập phiếu thuê.
+                                        </asp:Panel>
+                                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="offcanvas">Đóng</button>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+ 
+                            <EmptyDataTemplate>
+                                <div class="p-4">
+                                    <div class="alert alert-warning mb-3">
+                                        <h5 class="alert-heading">Không tìm thấy xe</h5>
+                                        <p class="mb-0">Xe bạn chọn không tồn tại hoặc đã bị xóa.</p>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="offcanvas">Đóng</button>
+                                </div>
+                            </EmptyDataTemplate>
+                        </asp:FormView>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </div>
+ 
+        <%-- Bootstrap phải nạp TRƯỚC các script khởi tạo của ScriptManager, nên đặt trong <form> --%>
+        <script src="<%= ResolveUrl("~/Scripts/bootstrap.bundle.min.js") %>"></script>
+        <script>
+        // Mở một offcanvas theo id (được gọi từ code-behind qua ScriptManager)
+        function moOffcanvas(id) {
+            var el = document.getElementById(id);
+            if (el && window.bootstrap) { bootstrap.Offcanvas.getOrCreateInstance(el).show(); }
+        }
+
+        // Bấm ảnh nhỏ trong panel chi tiết xe để đổi ảnh lớn
+        document.addEventListener("click", function (e) {
+            var nut = e.target.closest ? e.target.closest(".xe-thumb") : null;
+            if (!nut) return;
+            var anh = document.getElementById("ocAnhChinh");
+            if (anh) anh.src = nut.getAttribute("data-src");
+            document.querySelectorAll(".xe-thumb").forEach(function (t) { t.classList.remove("active"); });
+            nut.classList.add("active");
+        });
+        </script>
+    </form>
+
+    <script>
+    // Tô sáng mục menu của trang đang mở
+        (function () {
+            var cur = location.pathname.toLowerCase().replace(/\/$/, "/default.aspx");
+            document.querySelectorAll(".dt-navbar .navbar-nav .nav-link").forEach(function (a) {
+                if (a.pathname.toLowerCase() === cur) {
+                    a.classList.add("active");
+                    a.setAttribute("aria-current", "page");
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

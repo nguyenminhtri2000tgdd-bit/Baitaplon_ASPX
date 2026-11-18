@@ -1,0 +1,565 @@
+﻿/* ---------- 1. Bảng màu ---------- */
+:root {
+    --dt-black: #0d0d0f; /* nền thanh menu, chân trang (khớp màu đen của logo) */
+    --dt-charcoal: #1b1d22; /* tiêu đề thẻ, tiêu đề bảng */
+    --dt-gold: #d4a017; /* màu nhấn: nút chính, gạch chân, đường viền */
+    --dt-gold-light: #f0c24b; /* màu nhấn khi rê chuột trên nền tối */
+    --dt-gold-dark: #8a6508; /* chữ/liên kết màu vàng trên nền trắng (đủ độ tương phản) */
+    --dt-bg: #f4f4f2; /* nền trang */
+    --dt-text: #1f2328;
+    --dt-muted: #5d646e;
+    /* Ghi đè biến của Bootstrap để mọi thành phần đổi màu theo */
+    --bs-primary: #d4a017;
+    --bs-primary-rgb: 212, 160, 23;
+    --bs-body-bg: #f4f4f2;
+    --bs-body-color: #1f2328;
+    --bs-link-color: #8a6508;
+    --bs-link-color-rgb: 138, 101, 8;
+    --bs-link-hover-color: #5f4605;
+    --bs-link-hover-color-rgb: 95, 70, 5;
+    --bs-border-radius: .6rem;
+}
+
+/* ---------- 2. Nút bấm ---------- */
+.btn-primary {
+    --bs-btn-color: #111;
+    --bs-btn-bg: #d4a017;
+    --bs-btn-border-color: #d4a017;
+    --bs-btn-hover-color: #111;
+    --bs-btn-hover-bg: #e2b22e;
+    --bs-btn-hover-border-color: #e2b22e;
+    --bs-btn-active-color: #111;
+    --bs-btn-active-bg: #b88a10;
+    --bs-btn-active-border-color: #b88a10;
+    --bs-btn-focus-shadow-rgb: 212, 160, 23;
+    --bs-btn-disabled-color: #111;
+    --bs-btn-disabled-bg: #d4a017;
+    --bs-btn-disabled-border-color: #d4a017;
+    font-weight: 600;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #8a6508;
+    --bs-btn-border-color: #d4a017;
+    --bs-btn-hover-color: #111;
+    --bs-btn-hover-bg: #d4a017;
+    --bs-btn-hover-border-color: #d4a017;
+    --bs-btn-active-color: #111;
+    --bs-btn-active-bg: #d4a017;
+    --bs-btn-active-border-color: #d4a017;
+    --bs-btn-focus-shadow-rgb: 212, 160, 23;
+}
+
+/* ---------- 3. Ô nhập liệu (dùng ở các trang biểu mẫu) ---------- */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--dt-gold);
+    box-shadow: 0 0 0 .25rem rgba(212, 160, 23, .25);
+}
+
+.form-check-input:checked {
+    background-color: var(--dt-gold);
+    border-color: var(--dt-gold);
+}
+
+/* ---------- 4. Thanh menu ---------- */
+.dt-navbar {
+    background: var(--dt-black);
+    border-bottom: 3px solid var(--dt-gold);
+}
+
+    .dt-navbar .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+        color: #fff;
+        letter-spacing: .5px;
+    }
+
+    .dt-navbar .accent,
+    .dt-footer .accent {
+        color: var(--dt-gold);
+    }
+
+    .dt-navbar .navbar-toggler {
+        border-color: rgba(255, 255, 255, .35);
+    }
+
+    .dt-navbar .nav-link {
+        color: rgba(255, 255, 255, .75);
+        font-weight: 500;
+    }
+
+        .dt-navbar .nav-link:hover,
+        .dt-navbar .nav-link:focus {
+            color: var(--dt-gold-light);
+        }
+
+        .dt-navbar .nav-link.active {
+            color: var(--dt-gold);
+        }
+
+@media (min-width: 992px) {
+    .dt-navbar .nav-link.active {
+        box-shadow: inset 0 -3px 0 var(--dt-gold);
+    }
+}
+
+/* ---------- 5. Băng chuyền ảnh (trang chủ) ---------- */
+.hero-carousel .carousel-item {
+    background: var(--dt-black);
+}
+
+    .hero-carousel .carousel-item img {
+        width: 100%;
+        height: clamp(240px, 38vw, 480px);
+        object-fit: cover;
+    }
+
+    .hero-carousel .carousel-item::after { /* lớp phủ tối để chữ dễ đọc */
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(13, 13, 15, .88) 0%, rgba(13, 13, 15, .15) 55%, rgba(13, 13, 15, 0) 100%);
+    }
+
+.hero-carousel .carousel-caption {
+    z-index: 2;
+    left: 8%;
+    right: 8%;
+    bottom: 2.5rem;
+    text-align: left;
+}
+
+    .hero-carousel .carousel-caption h3 {
+        font-weight: 800;
+        letter-spacing: .5px;
+    }
+
+        .hero-carousel .carousel-caption h3::after {
+            content: "";
+            display: block;
+            width: 56px;
+            height: 3px;
+            margin-top: .5rem;
+            background: var(--dt-gold);
+        }
+
+.hero-carousel .carousel-indicators [data-bs-target] {
+    width: 30px;
+    height: 3px;
+    background-color: var(--dt-gold);
+}
+
+/* ---------- 6. Tiêu đề mục, khối giới thiệu, thẻ ---------- */
+.section-title {
+    font-weight: 700;
+    padding-left: .75rem;
+    border-left: 4px solid var(--dt-gold);
+}
+
+.hero-intro {
+    background: #fff;
+    border-radius: var(--bs-border-radius);
+    box-shadow: 0 .125rem .5rem rgba(0, 0, 0, .08);
+}
+
+.dt-card {
+    border: 0;
+    box-shadow: 0 .125rem .5rem rgba(0, 0, 0, .08);
+    overflow: hidden;
+}
+
+    .dt-card .card-header {
+        background: var(--dt-charcoal);
+        color: #fff;
+        font-weight: 600;
+        border-bottom: 3px solid var(--dt-gold);
+    }
+
+.card-link-hover {
+    border: 0;
+    border-left: 4px solid var(--dt-gold);
+    box-shadow: 0 .125rem .5rem rgba(0, 0, 0, .08);
+    transition: transform .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+    .card-link-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .14);
+    }
+
+/* ---------- 7. Thẻ thống kê (màu theo trạng thái xe) ---------- */
+.stat-card {
+    background: #fff;
+    border: 0;
+    border-left: 5px solid var(--stat, var(--dt-gold));
+    box-shadow: 0 .125rem .5rem rgba(0, 0, 0, .08);
+}
+
+    .stat-card .stat-number {
+        font-size: 2.25rem;
+        font-weight: 800;
+        line-height: 1.1;
+        color: var(--dt-black);
+    }
+
+    .stat-card .stat-label {
+        color: var(--dt-muted);
+    }
+
+.stat-ready {
+    --stat: #198754;
+}
+/* sẵn sàng  : xanh lá */
+.stat-rented {
+    --stat: var(--dt-gold);
+}
+/* đang thuê : vàng */
+.stat-maint {
+    --stat: #6c757d;
+}
+/* bảo trì   : xám */
+
+/* ---------- 8. Bảng dữ liệu (GridView) ---------- */
+.table > tbody > tr > th,
+.table > thead > tr > th {
+    background: var(--dt-charcoal);
+    color: #fff;
+    border-color: var(--dt-charcoal);
+    font-weight: 600;
+}
+
+/* ---------- 9. Chân trang ---------- */
+.dt-footer {
+    background: var(--dt-black);
+    color: rgba(255, 255, 255, .7);
+    border-top: 3px solid var(--dt-gold);
+}
+
+    .dt-footer a {
+        color: rgba(255, 255, 255, .8);
+        text-decoration: none;
+    }
+
+        .dt-footer a:hover,
+        .dt-footer a:focus {
+            color: var(--dt-gold-light);
+            text-decoration: underline;
+        }
+
+    .dt-footer li {
+        margin-bottom: .5rem;
+    }
+
+    .dt-footer .footer-title {
+        display: inline-block;
+        margin-bottom: .9rem;
+        padding-bottom: .5rem;
+        color: #fff;
+        font-size: .8rem;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--dt-gold);
+    }
+
+.footer-contact .label {
+    display: block;
+    color: var(--dt-gold);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.dt-footer .footer-divider {
+    border-color: rgba(255, 255, 255, .15);
+    opacity: 1;
+}
+
+/* ---------- 10. Thẻ xe ---------- */
+.xe-card {
+    border: 0;
+    overflow: hidden;
+    box-shadow: 0 .125rem .5rem rgba(0, 0, 0, .08);
+    transition: box-shadow .15s ease-in-out, transform .15s ease-in-out;
+}
+
+    .xe-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 .5rem 1.25rem rgba(0, 0, 0, .14);
+    }
+
+.xe-card-img {
+    position: relative;
+    background: var(--dt-charcoal);
+}
+
+    .xe-card-img img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 200px;
+        max-height: 260px;
+        object-fit: cover;
+    }
+
+@media (min-width: 768px) {
+    .xe-card-img img {
+        max-height: none;
+    }
+}
+
+.xe-status {
+    position: absolute;
+    top: .75rem;
+    left: .75rem;
+    padding: .4rem .7rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+
+.status-ready {
+    background: #198754;
+    color: #fff;
+}
+/* sẵn sàng     : xanh lá */
+.status-rented {
+    background: var(--dt-gold);
+    color: #111;
+}
+/* đang cho thuê: vàng */
+.status-maint {
+    background: #6c757d;
+    color: #fff;
+}
+/* bảo trì      : xám */
+
+.xe-price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--dt-gold-dark);
+}
+
+.xe-chip {
+    display: inline-block;
+    margin: 0 .35rem .35rem 0;
+    padding: .2rem .65rem;
+    border: 1px solid #e3e3df;
+    border-radius: 50rem;
+    background: #f4f4f2;
+    color: var(--dt-text);
+    font-size: .8rem;
+}
+
+.xe-rented {
+    color: var(--dt-muted);
+    font-size: .85rem;
+}
+
+/* ---------- 11. Ô chọn "Chỉ hiện xe sẵn sàng" ---------- */
+.dt-check input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: .5rem;
+    vertical-align: middle;
+    accent-color: var(--dt-gold);
+}
+
+/* ---------- 12. Thanh phân trang (DataPager) ---------- */
+.dt-pager a,
+.dt-pager span {
+    display: inline-block;
+    min-width: 2.4rem;
+    margin: 0 .15rem .3rem 0;
+    padding: .4rem .7rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dt-text);
+    background: #fff;
+    border: 1px solid #d9d9d4;
+    border-radius: .5rem;
+}
+
+    .dt-pager a:hover {
+        border-color: var(--dt-gold);
+        background: #fff8e1;
+        color: var(--dt-black);
+    }
+
+    .dt-pager span.current {
+        background: var(--dt-gold);
+        border-color: var(--dt-gold);
+        color: #111;
+        font-weight: 700;
+    }
+
+    .dt-pager span:not(.current) { /* nút « ‹ › » bị vô hiệu */
+        opacity: .45;
+    }
+
+/* ---------- 13. Thư viện ảnh ---------- */
+.xe-gallery {
+    overflow: hidden;
+}
+
+.xe-gallery-main {
+    position: relative;
+    background: var(--dt-charcoal);
+}
+
+    .xe-gallery-main img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+    }
+
+.xe-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: .75rem;
+    background: #fff;
+}
+
+.xe-thumb {
+    width: 88px;
+    height: 60px;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: .5rem;
+    background: none;
+    opacity: .7;
+    cursor: pointer;
+}
+
+    .xe-thumb img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .xe-thumb:hover,
+    .xe-thumb.active {
+        opacity: 1;
+        border-color: var(--dt-gold);
+    }
+
+/* ---------- 14. Giá lớn và bảng thông số dạng dt/dd ---------- */
+.xe-price-lg {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--dt-gold-dark);
+}
+
+.xe-spec {
+    margin: 0;
+}
+
+.xe-spec dt,
+.xe-spec dd {
+    margin: 0;
+    padding: .6rem 0;
+    border-bottom: 1px solid #ececE8;
+}
+
+.xe-spec dt {
+    font-weight: 500;
+    color: var(--dt-muted);
+}
+
+.xe-spec dd {
+    font-weight: 600;
+}
+
+.xe-spec dt:last-of-type,
+.xe-spec dd:last-of-type {
+    border-bottom: 0;
+}
+
+/* ---------- 15. Khung offcanvas dùng chung ---------- */
+.xe-offcanvas {
+    --bs-offcanvas-width: min(560px, 100vw); /* rộng 560px, trên điện thoại phủ kín màn hình */
+}
+
+    .xe-offcanvas .offcanvas-header {
+        background: var(--dt-charcoal);
+        color: #fff;
+        border-bottom: 3px solid var(--dt-gold);
+    }
+
+    .xe-offcanvas .offcanvas-title {
+        font-weight: 700;
+        letter-spacing: .02em;
+    }
+
+    .xe-offcanvas .offcanvas-body {
+        background: #fff;
+    }
+
+/* ---------- 16. Thẻ thông tin trong panel ---------- */
+.xe-tabs {
+    border-bottom: 1px solid #e3e3df;
+}
+
+    .xe-tabs .nav-link {
+        color: var(--dt-muted);
+        font-weight: 600;
+        border: 0;
+        border-bottom: 3px solid transparent;
+        background: transparent;
+    }
+
+        .xe-tabs .nav-link:hover,
+        .xe-tabs .nav-link:focus {
+            color: var(--dt-black);
+            border-color: transparent transparent #d9d9d4;
+        }
+
+        .xe-tabs .nav-link.active {
+            color: var(--dt-black);
+            background: transparent;
+            border-color: transparent transparent var(--dt-gold);
+        }
+
+/* ---------- 17. Thanh nút cố định ở đáy panel ---------- */
+.xe-oc-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 1.5rem;
+    background: #fff;
+    border-top: 1px solid #e3e3df;
+    box-shadow: 0 -.5rem 1rem rgba(0, 0, 0, .05);
+}
+
+.xe-oc-footer > .btn-primary {
+    flex: 1;
+}
+
+.xe-oc-note {
+    flex: 1;
+    font-size: .9rem;
+    color: var(--dt-muted);
+}
+
+/* ---------- 18. Nhóm nút chọn (RadioButtonList) ---------- */
+.dt-radio input {
+    margin-right: .35rem;
+    vertical-align: middle;
+    accent-color: var(--dt-gold);
+}
+
+.dt-radio label {
+    margin-right: 1.25rem;
+    vertical-align: middle;
+}
